@@ -1,5 +1,5 @@
 # Exploration of Multimodal Approaches in Image-to-Audio Synthesis
-This organization was created for coursework conducted at the *National University of Kyiv-Mohyla Academy*. It contains the modified repository for video feature extraction and the repository for the experiments with the finetuning of the [SpecVQGAN](https://github.com/v-iashin/SpecVQGAN) model. This `README` file provides a summary of our experiments, fine-tuning efforts, and key insights from the coursework.
+This organization was created for the coursework conducted at the *National University of Kyiv-Mohyla Academy*. It contains the modified repository for video feature extraction and the repository for the experiments with the finetuning of the [SpecVQGAN](https://github.com/v-iashin/SpecVQGAN) model. This `README` file provides a summary of our experiments, fine-tuning efforts, and key insights from the coursework.
 
 ## Table of Contents
 1. [Goals of Experiments](#goals-of-experiments)
