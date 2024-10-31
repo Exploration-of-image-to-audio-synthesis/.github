@@ -2,19 +2,29 @@
 This organization was created for the coursework conducted at the *National University of Kyiv-Mohyla Academy*. It contains the modified repository for video feature extraction and the repository for the experiments with the finetuning of the [SpecVQGAN](https://github.com/v-iashin/SpecVQGAN) model. This `README` file provides a summary of our experiments, fine-tuning efforts, and key insights from the coursework.
 
 ## Table of Contents
-1. [Goals of Experiments](#goals-of-experiments)
-2. [Feature Extraction](#feature-extraction)
-3. [Experiments](#experiments)
+1. [Overview](#overview)
+2. [Goals of Experiments](#goals-of-experiments)
+3. [Feature Extraction](#feature-extraction)
+4. [Experiments](#experiments)
    - [Architecture Comparison and Model Selection](#architecture-comparison-and-model-selection)
    - [Dataset and Resources](#dataset-and-resources)
    - [Evaluation](#evaluation)
-4. [Results](#results)
+5. [Results](#results)
    - [Impact of Feature Extractors](#impact-of-feature-extractors)
    - [Impact of Model Configurations](#impact-of-model-configurations)
    - [Impact of Regularization](#impact-of-regularization)
    - [Impact of Overfitting](#impact-of-overfitting)
-5. [Limitations of the Experiments](#limitations-of-the-experiments)
-6. [Conclusions](#conclusions)
+6. [Limitations of the Experiments](#limitations-of-the-experiments)
+7. [Conclusions](#conclusions)
+
+## Overview
+In this coursework, we accomplished the following:
+
+* Achieved an 11% improvement in quality (FID) and a 9% improvement in fidelity (KL divergence) for SpecVQGAN image-to-audio synthesis model under limited data conditions.
+* Optimized the feature extraction pipeline with CLIP and EfficientNetV2. Implemented a custom frame-wise feature extractor for EfficientNetV2 models.
+* Applied regularization techniques (dropout, weight decay and learning rate schedulers) to a minGPT transformer model to reduce overfitting.
+* Experimented with various configurations for a minGPT transformer model, including layers, attention heads, and embedding dimensions.
+* Conducted a thorough comparative analysis of state-of-the-art approaches for image-to-audio generation.
 
 ## Goals of Experiments
 The goal of our work was to examine several well-documented observations about deep learning algorithms and test them in the image-to-audio domain, through a comparative analysis of different parameter configurations.
