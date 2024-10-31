@@ -1,5 +1,5 @@
 # Exploration of Multimodal Approaches in Image-to-Audio Synthesis
-This organization was created for coursework conducted at the National University of Kyiv-Mohyla Academy. It contains the modified repository for video feature extraction and the repository for the experiments with the finetuning of the [SpecVQGAN](https://github.com/v-iashin/SpecVQGAN) model. This README file provides a summary of our experiments, fine-tuning efforts, and key insights from the coursework.
+This organization was created for coursework conducted at the *National University of Kyiv-Mohyla Academy*. It contains the modified repository for video feature extraction and the repository for the experiments with the finetuning of the [SpecVQGAN](https://github.com/v-iashin/SpecVQGAN) model. This `README` file provides a summary of our experiments, fine-tuning efforts, and key insights from the coursework.
 
 ## Table of Contents
 1. [Goals of Experiments](#goals-of-experiments)
@@ -17,19 +17,19 @@ This organization was created for coursework conducted at the National Universit
 6. [Conclusions](#conclusions)
 
 ## Goals of Experiments
-The primary goal of our work was to examine several well-documented observations from deep learning, which have remained relatively unexplored in the image-to-audio domain, through a comparative analysis of different parameter configurations.
+The goal of our work was to examine several well-documented observations about deep learning algorithms and test them in the image-to-audio domain, through a comparative analysis of different parameter configurations.
 
-Specifically, we aimed to:
+We aimed to:
 
-* Assess the generalizability and complexity of different feature extractor models, focusing on ResNet, EfficientNet, and CLIP.
-* Test whether simplified models could yield a better result with limited data than larger models, and explore the importance of generalization.
+* Compare the generalizability and complexity of different feature extractor models, such as ResNet, EfficientNetV2, and CLIP.
+* Test whether simplified models could achieve a better result with limited data than larger models, and explore the importance of generalization.
 * Evaluate the impact of core transformer parameters, including the number of layers, attention heads, and embedding dimensions.
 * Investigate how regularization techniques (e.g. dropout, weight decay, learning rate schedulers) influence model generalizability and performance.
 
 Additionally, we conducted a comparative analysis of current state-of-the-art approaches, focusing on architectural differences. We examined the impact of direct tokenization versus spectrogram-based representations, and the use of transformer models for samping audio tokens.
 
 ## Feature extraction
-We experimented with replacing the ResNet50 RGB feature extractor used in SpecVQGAN with alternative models. Specifically, we decided to pick **EfficientNetV2** (**S** and **L** variants) and **CLIP-ViT-B-32**. We also experimented with different variants of ResNet, specifically with **Resnet18**. All of the models had been pre-trained on the ImageNet dataset.
+We experimented with replacing the **ResNet50** RGB feature extractor used in SpecVQGAN with alternative models. Specifically, we decided to pick **EfficientNetV2** (**S** and **L** variants) and **CLIP-ViT-B-32**. We also experimented with different variants of ResNet, specifically with **Resnet18**. All of the models had been pre-trained on the ImageNet dataset.
 
 For extracting ResNet features, we used branch `specvqgan` of the `video_features` repository that authors of SpecVQGAN also used. We switched to the `main` branch of this repository for extracting CLIP features.
 
