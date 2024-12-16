@@ -4,18 +4,18 @@ This organization was created for the coursework conducted at the *National Univ
 ## Table of Contents
 1. [Overview](#overview)
 2. [Goals of Experiments](#goals-of-experiments)
-3. [Feature Extraction](#feature-extraction)
-4. [Experiments](#experiments)
+3. [Experiments](#experiments)
    - [Architecture Comparison and Model Selection](#architecture-comparison-and-model-selection)
+   - [Feature Extraction](#feature-extraction)
    - [Dataset and Resources](#dataset-and-resources)
    - [Evaluation](#evaluation)
-5. [Results](#results)
+4. [Results](#results)
    - [Impact of Feature Extractors](#impact-of-feature-extractors)
    - [Impact of Model Configurations](#impact-of-model-configurations)
    - [Impact of Regularization](#impact-of-regularization)
    - [Impact of Overfitting](#impact-of-overfitting)
-6. [Limitations of the Experiments](#limitations-of-the-experiments)
-7. [Conclusions](#conclusions)
+5. [Limitations of the Experiments](#limitations-of-the-experiments)
+6. [Conclusion](#conclusion)
 
 ## Overview
 In this coursework, we accomplished the following:
@@ -38,14 +38,6 @@ We aimed to:
 
 Additionally, we conducted a comparative analysis of current state-of-the-art approaches, focusing on architectural differences. We examined the impact of direct tokenization versus spectrogram-based representations, and the use of transformer models for samping audio tokens.
 
-## Feature extraction
-We experimented with replacing the **ResNet50** RGB feature extractor used in SpecVQGAN with alternative models. Specifically, we decided to pick **EfficientNetV2** (**S** and **L** variants) and **CLIP-ViT-B-32**. We also experimented with different variants of ResNet, specifically with **Resnet18**. All of the models had been pre-trained on the ImageNet dataset.
-
-For extracting ResNet features, we used branch `specvqgan` of the `video_features` repository that authors of SpecVQGAN also used. We switched to the `main` branch of this repository for extracting CLIP features.
-
-For EfficientNetV2 features, we forked the `specvqgan` branch of `video_features` repository and added a torchvision implementation of EfficientNetV2 architecture. This repository can be found in this organization: [link](https://github.com/Exploration-of-image-to-audio-synthesis/video-features-extraction). 
-
-
 ## Experiments
 ### Architecture comparison and model selection
 We compared two models for audio generation from video frames: [SpecVQGAN](https://v-iashin.github.io/SpecVQGAN) and [IM2WAV](https://arxiv.org/abs/2211.03089) to choose a suitable model for our experiments. Although IM2WAV benchmarks suggest their model outperforms SpecVQGAN, when testing these models in real scenarios we observed that SpecVQGAN produces cleaner and less noisy audio. We suppose that this improvement is due to using spectrogram tokens instead of pure audio tokens. However, IM2WAV was better at recognizing objects and details in the frames, and reflecting them in the generated sound, possibly due to better performance of the CLIP feature extractor.
@@ -54,6 +46,13 @@ Ultimately, we chose to focus on SpecVQGAN due to its performance, as well as cl
 
 > [!NOTE]
 > We attempted to replicate SpecVQGAN's results on the VAS dataset, but initial attempts did not align with those claimed by the authors. [Similar issues](https://github.com/v-iashin/SpecVQGAN/issues/35) have been raised on the SpecVQGAN Github repository. Nevertheless, since our primary goal was comparative analysis, reproducing the exact results was not critical, as we could still base our comparisons on the results we achieved.
+
+### Feature extraction
+We experimented with replacing the **ResNet50** RGB feature extractor used in SpecVQGAN with alternative models. Specifically, we decided to pick **EfficientNetV2** (**S** and **L** variants) and **CLIP-ViT-B-32**. We also experimented with different variants of ResNet, specifically with **Resnet18**. All of the models had been pre-trained on the ImageNet dataset.
+
+For extracting ResNet features, we used branch `specvqgan` of the `video_features` repository that authors of SpecVQGAN also used. We switched to the `main` branch of this repository for extracting CLIP features.
+
+For EfficientNetV2 features, we forked the `specvqgan` branch of `video_features` repository and added a torchvision implementation of EfficientNetV2 architecture. This repository can be found in this organization: [link](https://github.com/Exploration-of-image-to-audio-synthesis/video-features-extraction). 
 
 ### Dataset and Resources
 We used the Visually Aligned Sounds (VAS) dataset for all of our experiments due to its small size, which allowed for quicker training and testing. Training was initially done on a personal RTX 3060 (6 GB VRAM) GPU but later scaled to a desktop with an RTX 3080 (12 GB VRAM) and finally a SLURM cluster using A100 and V100 GPUs with 40 and 80 GB VRAM.
